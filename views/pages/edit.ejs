@@ -1,0 +1,27 @@
+<div class="jumbotron text-center">
+   <h1>Editting <%= event.name %></h1>
+</div>
+
+<div class="col-sm-6 col-sm-offset-3">
+   <form action="/events/<%= event.slug %>" method="POST">
+      <% if( errors.length > 0) { %>
+         <div class="alert alert-danger">
+            <% for (error of errors ) { %>
+               <%= error %><br/>
+            <% } %>
+         </div>
+      <% } %>
+      <div class="form-group">
+         <label>Name</label>
+         <input type="text" name="name" value="<%= event.name %>" class="form-control">
+      </div>
+
+      <div class="form-group">
+         <label>Description</label>
+         <textarea name="description" rows="5" class="form-control"><%= event.description %></textarea>
+      </div>
+
+      <button class="btn btn-success btn-lg" type="submit">Update</button>
+
+   </form>
+</div>
